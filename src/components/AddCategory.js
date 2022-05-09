@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Addcategory = () => {
+const Addcategory = ({setCategories}) => {
+    const [inputValue, setInputValue] = useState("");
+    const handleInputChange = ({target})=>{
+        setInputValue(target.value)
+    }
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+
+        if (inputValue.trim().length > 2) {
+            setCategories(categories => [inputValue, ...categories])
+            setInputValue("")
+        }
+    }
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
                 type="text"
                 className='form-control'
+                onChange={handleInputChange}
+                value={inputValue}
             />
         </form>
     );
