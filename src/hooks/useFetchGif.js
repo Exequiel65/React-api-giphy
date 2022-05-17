@@ -10,8 +10,11 @@ const Usefetchgif = (category) => {
 
     useEffect(() => {
         Getgif(category)
-        .then(gif =>{
-            console.log(gif)
+        .then(gifs =>{
+            setState({
+                data : gifs,
+                loading : false
+            })
         })
         .catch(error => console.error(error))
 

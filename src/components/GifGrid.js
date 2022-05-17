@@ -1,15 +1,22 @@
 import React from 'react';
 import Usefetchgif from '../hooks/useFetchGif';
+import Gifgriditem from './GifGridItem';
 
 const Gifgrid = ({category}) => {
     
-    Usefetchgif(category)
+    const {data: images, loading} = Usefetchgif(category)
     return (
         <>
             <h3>{category}</h3>
-            {/* Aplicar loading... */}
+            {
+                loading && <p>Cargando.....</p>
+            }
             <div className='row'>
-                {/* Aqui van las tarjetas mapeadas */}
+                {
+                    images.map(image => (
+                        <Gifgriditem key={image.id} {...image} />
+                    ))
+                }
 
 
             </div>

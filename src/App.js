@@ -7,6 +7,7 @@ import Gifgrid from './components/GifGrid';
 function App() {
 
   const [categories, setCategories] = useState([]);
+  console.log(categories)
   
   return (
     <div className="container">
